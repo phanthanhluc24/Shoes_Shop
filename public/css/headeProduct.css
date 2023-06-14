@@ -1,0 +1,283 @@
+.container--header--menu {
+  width: auto;
+  height: auto;
+}
+
+.nemu--logo {
+  width: 1600px;
+  height: 550px;
+  position: relative;
+  top: 0px;
+  left: 0px;
+  margin-left: -6px;
+  margin-top: -7px;
+}
+.nemu--logo img {
+  width: 1580px;
+  height: 600px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.menu--tapba {
+  position: absolute;
+  top: 0;
+  display: flex;
+  background: rgba(54, 46, 41, 0.6);
+  width: 1580px;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  z-index: 2;
+}
+.menu--tapba .tapba--word {
+  margin-left: 200px;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+.menu--tapba .tapba--word li {
+  list-style: none;
+  padding-left: 20px;
+  text-transform: uppercase;
+  color: white;
+}
+.menu--tapba .tapba--word a {
+  text-decoration: none;
+  color: white;
+}
+.menu--tapba .tapba--icon {
+  margin-left: 200px;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+.menu--tapba .tapba--icon li {
+  list-style: none;
+  padding-left: 20px;
+  text-transform: uppercase;
+  color: white;
+}
+.menu--tapba .tapba--icon a {
+  text-decoration: none;
+  color: white;
+}
+
+.container--grid--cart {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 10px;
+  margin-top: 100px;
+  margin-left: 20px;
+}
+
+.left-top-image,
+.left-bottom-image,
+.content-image,
+.right-top-image,
+.right-bottom-image {
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.left-top-image {
+  grid-row: 1;
+  grid-column: 1;
+}
+.left-top-image img {
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+}
+.left-top-image .product-name {
+  position: absolute;
+  bottom: -5%;
+  left: 20%;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  background: rgba(15, 14, 14, 0.6);
+  width: 150px;
+  height: 70px;
+  border-radius: 8px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  z-index: 4;
+}
+.left-top-image .product-name:hover {
+  background: rgba(20, 20, 158, 0.6);
+}
+
+.left-bottom-image {
+  grid-row: 2;
+  grid-column: 1;
+}
+.left-bottom-image img {
+  border-radius: 8px;
+}
+.left-bottom-image .product-name {
+  position: absolute;
+  bottom: -45%;
+  left: 20%;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  background: rgba(15, 14, 14, 0.6);
+  width: 150px;
+  height: 70px;
+  border-radius: 8px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.left-bottom-image .product-name:hover {
+  background: rgba(20, 20, 158, 0.6);
+}
+
+.content-image {
+  grid-column: 2;
+  grid-row: 1/span 2;
+}
+.content-image img {
+  border-radius: 8px;
+}
+.content-image .product-name {
+  position: absolute;
+  bottom: -5%;
+  left: 45%;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  background: rgba(15, 14, 14, 0.6);
+  width: 250px;
+  height: 70px;
+  border-radius: 8px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.content-image .product-name:hover {
+  background: rgba(20, 20, 158, 0.6);
+}
+
+.right-top-image {
+  grid-column: 3;
+  grid-row: 1;
+}
+.right-top-image img {
+  border-radius: 8px;
+}
+.right-top-image .product-name {
+  position: absolute;
+  bottom: -5%;
+  left: 70%;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  background: rgba(15, 14, 14, 0.6);
+  width: 150px;
+  height: 70px;
+  border-radius: 8px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.right-top-image .product-name:hover {
+  background: rgba(20, 20, 158, 0.6);
+}
+
+.right-bottom-image {
+  grid-column: 3;
+  grid-row: 2;
+}
+.right-bottom-image img {
+  border-radius: 8px;
+}
+.right-bottom-image .product-name {
+  position: absolute;
+  bottom: -45%;
+  left: 70%;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  background: rgba(15, 14, 14, 0.6);
+  width: 150px;
+  height: 70px;
+  border-radius: 8px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.right-bottom-image .product-name:hover {
+  background: rgba(20, 20, 158, 0.6);
+}
+
+.container--product-card {
+  margin-top: 40px;
+}
+
+.product--card--div {
+  min-width: 350px;
+  min-height: 410px;
+  margin-left: 10px;
+  justify-content: center;
+  align-items: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 20px;
+}
+.product--card--div .cover--product--card {
+  width: 330px;
+  height: 390px;
+  border-radius: 8px;
+}
+.product--card--div .cover--product--card img {
+  border-radius: 8px;
+  width: 330px;
+  height: 250px;
+}
+.product--card--div .cover--product--card .card--price {
+  display: flex;
+}
+.product--card--div .cover--product--card .card--price del {
+  color: rgb(244, 105, 105);
+}
+.product--card--div .cover--product--card .form--two--botton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.product--card--div .cover--product--card .form--two--botton button {
+  min-width: 100px;
+  height: 40px;
+  margin-left: 10px;
+  border-radius: 50px;
+  outline: none;
+  border: none;
+  text-transform: uppercase;
+  color: #fff;
+}
+.product--card--div .cover--product--card .form--two--botton button:hover {
+  cursor: pointer;
+}
+.product--card--div .cover--product--card .form--two--botton .btn-success {
+  background: rgb(245, 161, 4);
+}
+.product--card--div .cover--product--card .form--two--botton .btn-success:hover {
+  background: rgb(248, 126, 4);
+  color: black;
+}
+.product--card--div .cover--product--card .form--two--botton .btn-warning {
+  background: rgb(203, 64, 14);
+}
+.product--card--div .cover--product--card .form--two--botton .btn-warning:hover {
+  background: rgb(227, 190, 6);
+  color: black;
+}
+.product--card--div .cover--product--card .form--two--botton .btn-warning a {
+  text-decoration: none;
+  color: #fff;
+}/*# sourceMappingURL=headeProduct.css.map */

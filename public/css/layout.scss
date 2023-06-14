@@ -1,0 +1,43 @@
+.container--header--menu {
+    width: auto;
+    height: auto;
+  }
+  
+  .nemu--logo {
+    width: 1600px;
+    height: 550px;
+    position: relative;
+  }
+  .nemu--logo img {
+    width: 1600px;
+    height: 600px;
+    -o-object-fit: cover;
+       object-fit: cover;
+  }
+  
+  .menu--tapba {
+    position: fixed;
+    top: 0;
+    display: flex;
+    background: rgba(54, 46, 41, 0.6);
+    width: 1600px;
+    z-index: 2;
+  }
+  .menu--tapba .tapba--word {
+    margin-left: 200px;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+  }
+  .menu--tapba .tapba--word li {
+    list-style: none;
+    padding-left: 20px;
+    text-transform: uppercase;
+    color: white;
+
+    a{
+      list-style: none;
+      color: #fff;
+    }
+  }
