@@ -3,11 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Comment;
 use Illuminate\Support\Str;
 use App\Models\Product;
 use App\Models\Shopping;
 use App\Models\User;
-use App\Models\users;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -47,11 +47,23 @@ class ProductController extends Controller
      */
     public function addToCard($id)
     {
+        $user=intval(Auth::id());
         $toCard=Product::findOrFail($id);
-        $shopping=Shopping::create([
-            "id_product"=>$toCard->id
-        ]);
-        return redirect()->route("/");
+        $shopping=Shopping::where("id_product",$toCard->id)
+        ->where("id_user",$user)
+        ->first();
+       
+        if ($shopping) {
+            $shopping->quantity+=1;
+        }
+        else{
+            $shopping=new Shopping();
+            $shopping->id_product=$toCard->id;
+            $shopping->id_user=$user;
+            $shopping->quantity="1";
+        }
+        $shopping->save();
+        return redirect()->route("index");
     }
     public function producHome()
     {
@@ -96,9 +108,21 @@ class ProductController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function detail($id)
     {
-        //
+         $product = Product::findOrFail($id);
+
+        $user_comment=Comment::where("id_product",$id)
+        ->join("users","comments.id_user","=","users.id")
+        ->select("users.fullname","comments.text","comments.rating")
+        ->get();
+        $rating=Comment::whereNotNull('rating')
+        ->where("id_product",$id)
+        ->get();
+        $ratingCount=$rating->count();
+        $ratingSum=$rating->sum("rating");
+        $sumRating=($ratingCount != 0) ? ($ratingSum / $ratingCount) : 0;
+        return view("Home.Pages.detail-product", ['product' => $product,"user_comment"=>$user_comment,"sumRating"=>$sumRating]);
     }
 
     /**
@@ -119,5 +143,19 @@ class ProductController extends Controller
         $product = Product::findOrFail($id);
         $product->delete($request->all());
         return redirect()->route('Adminshow');
+    }
+    public function Increment($id){ 
+        $product = Shopping::findOrFail($id);
+        $quantity=$product->quantity;
+        $product->quantity = $quantity + 1;
+        $product->save();
+        return redirect()->back();
+    }
+    public function Decrement($id){
+        $product = Shopping::findOrFail($id);
+        $quantity=$product->quantity;
+        $product->quantity = $quantity-1;
+        $product->save();
+        return redirect()->back();
     }
 }

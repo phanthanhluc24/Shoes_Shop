@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\SendRegistrationEmail;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
+
 class AuthenticationController extends Controller
 {
     public function register()
@@ -32,6 +35,8 @@ class AuthenticationController extends Controller
             'phone' => $request->phone,
         ]);
         if($user){
+            // Mail::to()
+            dispatch(new SendRegistrationEmail($request->fullname,$request->email))->delay(now()->addSeconds(10));
             return redirect()->route("login");
         }else{
             return redirect()->route("register");
@@ -44,7 +49,6 @@ class AuthenticationController extends Controller
         $vnp_Returnurl = "http://127.0.0.1:8000/sendemail";
         $vnp_TmnCode = "UYW4DL8F"; //Mã website tại VNPAY 
         $vnp_HashSecret = "NBMPXLWMJEIKNXKKKYWZMTXWODNIGYNG"; //Chuỗi bí mật
-
         $vnp_TxnRef = "2679";//$_POST['order_id']; //Mã đơn hàng. Trong thực tế Merchant cần insert đơn hàng vào DB và gửi mã này sang VNPAY
         $vnp_OrderInfo ="Thanh Toán" ;//$_POST['order_desc'];
         $vnp_OrderType ="billpayment"; //$_POST['order_type'];

@@ -60,6 +60,20 @@
   text-transform: uppercase;
   color: white;
 }
+.menu--tapba .tapba--icon .shopping--cart .cart-product {
+  position: absolute;
+  margin-top: 20px;
+  left: 75%;
+  display: none;
+  background-color: #f6ca04;
+}
+.menu--tapba .tapba--icon .shopping--cart .cart-product .product--list {
+  display: flex;
+  gap: 2px;
+}
+.menu--tapba .tapba--icon:hover .cart-product {
+  display: block;
+}
 .menu--tapba .tapba--icon a {
   text-decoration: none;
   color: white;
@@ -280,4 +294,18 @@
 .product--card--div .cover--product--card .form--two--botton .btn-warning a {
   text-decoration: none;
   color: #fff;
+}
+
+.header--research {
+  position: absolute;
+  top: 10%;
+  left: 30%;
+  display: flex;
+}
+.header--research .research {
+  width: 400px;
+  height: 50px;
+  border: none;
+  border-radius: 10px;
+  outline: none;
 }/*# sourceMappingURL=headeProduct.css.map */

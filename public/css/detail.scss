@@ -1,0 +1,139 @@
+.container--detail{
+    display: grid;
+    grid-template-columns: 30% 30% 30%;
+    margin-top: 100px;
+}
+.detail--image{
+    margin-left: 50px;
+    img{
+        width: 300px;
+        height: 400px;
+        object-fit: cover;
+        border-radius: 2px;
+    }
+}
+.detail--text{
+    margin-left: -60px;
+}
+.user--comment{
+    display: grid;
+    grid-template-columns: 30% 30% 30%;
+    padding: 30px;
+}
+.text--comment{
+    width: 500px;
+    margin-left: 40;
+    textarea{ 
+        width: 500px;
+
+    }
+}
+.rating--star{
+    margin-left: -150px;
+}
+ .fiver--star {
+        i {
+            display: inline-block;
+            color: #FFD700;
+            font-size: 40px;
+        }
+        i::before {
+            content: "\2605";
+            color: #FFD700;
+          }
+      }
+      
+     
+      
+      
+
+
+.four--star{
+    i {
+        display: inline-block;
+        color: #FFD700;
+        font-size: 40px;
+    }
+    i::before {
+        content: "\2605";
+        color: #FFD700;
+      }
+}
+.three--star{
+    i {
+        display: inline-block;
+        color: #FFD700;
+        font-size: 40px;
+    }
+    i::before {
+        content: "\2605";
+        color: #FFD700;
+      }
+}
+.two--star{
+    i {
+        display: inline-block;
+        color: #FFD700;
+        font-size: 40px;
+    }
+    i::before {
+        content: "\2605";
+        color: #FFD700;
+      }
+}
+.one--star{
+    i {
+        display: inline-block;
+        color: #FFD700;
+        font-size: 40px;
+    }
+    i::before {
+        content: "\2605";
+        color: #FFD700;
+      }
+}
+
+
+.evaluate--star{
+    margin-left: 80px;
+    .fivers--star {
+        display: inline-block;
+    }
+    .fivers--star i {
+        font-size: 30px;
+        color: gray;
+    }
+    .fivers--star .gold::before {
+        content: "\2605";
+        color: #FFD700;
+        font-size: 40px;
+    }
+}
+.comment--product{
+    margin-left: 100px;
+    width: 150px;
+    height: 50px;
+    background: rgb(223, 212, 5);
+    border-radius: 8px;
+}
+.user--evaluate--coment{
+    margin-left: 50px;
+    .content{
+        box-shadow: 1px 1px 1px 1px #342e2e;
+        width: 250px;
+        min-height: 50px;
+        border-radius: 8px;
+        h3,p{
+            margin-left: 10px;
+        }
+        i{
+            display: inline-block;
+            color: #FFD700;
+            font-size: 30px;
+        }
+        i::before {
+            content: "\2605";
+            color: #FFD700;
+        }
+    }
+}

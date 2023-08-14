@@ -29,6 +29,7 @@
                             <th>Ảnh</th>
                             <th>Giá</th>
                             <th>Số lượng</th>
+                            <th>Hành động</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -38,7 +39,27 @@
                                 <td>{{$item->title}}</td>
                                 <td><img width="50px" height="60px" src="{{ asset("image/".$item->image.".png") }}"></td>
                                 <td>{{$item->price_new}}</td>
-                                <td>{{ $quantity }}</td>
+                                <td class="d-flex"> 
+                                    <form action="{{ route("decrement",$item->id) }}" method="post">
+                                        @method('PUT')
+                                        @csrf
+                                        <button class="btn btn-success ml-4">-</button>
+                                    </form>
+                                   
+                                    {{$item->quantity }}
+                                    <form action="{{ route("increment",$item->id ) }}" method="post">
+                                        @method('PUT')
+                                        @csrf
+                                        <button class="btn btn-warning">+</button>
+                                    </form>
+                                </td>
+                                <form action="{{ route("userDelete",$item->id) }}" method="post">
+                                    @csrf
+                                    @method('DELETE')
+                                    <td>
+                                        <button type="submit" class="btn btn-danger">Xóa</button>
+                                    </td>
+                                </form>
                             </tr>
                         @endforeach
                     </tbody>
@@ -46,7 +67,6 @@
             </div>
             <div class="card-footer">
                 <b>Thành tiền {{ $sum }}.000</b>
-                
                 <a href="{{ route("truncate") }}" onclick="Payment()" class="btn btn-success ml-4">Thanh toán</a>
             </div>
         </div>

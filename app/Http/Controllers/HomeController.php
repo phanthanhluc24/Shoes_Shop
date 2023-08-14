@@ -15,14 +15,14 @@ class HomeController extends Controller
     public function checkUser(Request $request)
     {
         $information=$request->only("password","email");
-
+        
         if (Auth::attempt($information)) {
             $user=Auth::user();
             if($user->useType=='ADM'){
                 return redirect()->route("Adminshow");
             }elseif($user->useType=='USR'){
                 session()->put("email",$user->email);
-                return redirect()->route("/");
+                return redirect()->route("index");
         }
     }
     }
@@ -37,13 +37,8 @@ class HomeController extends Controller
     }
 
  
-    // public function checkUsers()
-    // {
-    //     $idUser=Auth::id();
-    //     $id=users::findOrFail($idUser);
-    //     if($id){
-    //         $name=$id->Fullname;
-    //     }
-    //     dd($id); 
-    // }
+    public function logout() {
+        session()->forget("email");
+        return redirect()->route("index");
+    }
 }

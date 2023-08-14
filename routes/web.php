@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthenticationController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ResearchController;
 use App\Http\Controllers\ShoppingController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -38,7 +39,7 @@ Route::post('/check', [HomeController::class, "checkUser"])->name('check');
 // Route::get('/order', [ShoppingController::class, "index"])->name('order');
 
 // Giày dép
-Route::get("/",[ProductController::class,"index"])->name("/");
+Route::get("/",[ProductController::class,"index"])->name("index");
 Route::get("/Adminadd",[ProductController::class,"addProduct"])->name("Adminadd");
 Route::post('/store', [ProductController::class, "store"])->name('store');
 Route::get("/Adminshow",[AdminController::class,"index"])->name("Adminshow");
@@ -49,3 +50,12 @@ Route::get('/add-to-card/{id}', [ProductController::class, "addToCard"])->name('
 Route::get('/user-shopping', [ShoppingController::class, "index"])->name('user-shopping');
 Route::get('/truncate', [ShoppingController::class, "destroy"])->name('truncate');
 Route::post('/payment', [AuthenticationController::class, "payment"])->name('payment');
+Route::get("/logout",[HomeController::class, "logout"])->name("logout");
+Route::delete('/delete/{id}',[ShoppingController::class,"delete"])->name("userDelete");
+
+Route::post("/research",[ResearchController::class, "index"]);
+
+Route::get("/detail/{id}",[ProductController::class, "detail"])->name('detail');
+Route::post("/detail-page",[ShoppingController::class, "storeDetal"])->name('detail-page');
+Route::put("/increment/{id}",[ProductController::class, "Increment"])->name('increment');
+Route::put("/decrement/{id}",[ProductController::class, "Decrement"])->name('decrement');

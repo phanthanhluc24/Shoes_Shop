@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Comment;
 use App\Models\Product;
 use App\Models\Shopping;
 use Illuminate\Http\Request;
@@ -15,16 +16,17 @@ class ShoppingController extends Controller
      */
     public function index()
     {
-        $order = Product::select('products.title', "products.image", "products.price_new")
+        $id=intval(Auth::id());
+        $order = Product::select('shoppings.id','shoppings.quantity','products.title', "products.image", "products.price_new")
             ->join("shoppings", "shoppings.id_product", "=", "products.id")
+            ->where("id_user",$id)
             ->get();
-            $quantity = 1;
             $sum=0;
             foreach($order as $item){
-                $sum += $quantity * $item->price_new;
+                $sum += $item->quantity * $item->price_new;
             };
             return view("Home.Pages.user-shopping", [
-                'order' => $order, "quantity" => $quantity,
+                'order' => $order,
                 "sum" => $sum
             ]);
            
@@ -34,9 +36,23 @@ class ShoppingController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function storeDetal(Request $request)
     {
-        //
+        $request->validate([
+            "text"=>"required",
+            "rating"=>"nullable",
+        ]);
+        $text=$request->text;
+        $rating=$request->rating;
+        $id_product=$request->id_product;
+        $id=intval(Auth::id());
+        $comment=new Comment();
+        $comment->id_user = $id;
+        $comment->id_product = $id_product;
+        $comment->rating=$rating;
+        $comment->text = $text;
+        $comment->save();
+        return redirect()->back();
     }
 
     /**
@@ -44,21 +60,21 @@ class ShoppingController extends Controller
      */
     public function store(Request $request)
     {
-        $id_user = Auth::user()->id;
-        $id_product = $request->id_product;
-        $soluong = $request->soluong;
-        $getInfor = DB::table("products")->where("id", "$id_product")->first();
-        $gia = $getInfor->Price;
-        $sum = $soluong * $getInfor->Price;
-        DB::table('shoppings')->insert([
-            "ID_product" => $id_product,
-            "ID_user" => $id_user,
-            "Soluong" => $soluong,
-            "Gia" => $gia,
-            "Thanh_tien" => $sum
-        ]);
+        // $id_user = Auth::user()->id;
+        // $id_product = $request->id_product;
+        // $soluong = $request->soluong;
+        // $getInfor = DB::table("products")->where("id", "$id_product")->first();
+        // $gia = $getInfor->Price;
+        // $sum = $soluong * $getInfor->Price;
+        // DB::table('shoppings')->insert([
+        //     "ID_product" => $id_product,
+        //     "ID_user" => $id_user,
+        //     "Soluong" => $soluong,
+        //     "Gia" => $gia,
+        //     "Thanh_tien" => $sum
+        // ]);
 
-        return redirect()->route("order");
+        // return redirect()->route("order");
     }
 
     /**
@@ -91,6 +107,11 @@ class ShoppingController extends Controller
     public function destroy()
     {
         Shopping::truncate();
-       return redirect()->route('user-shopping');
+        return redirect()->route('user-shopping');
+    }
+    public function delete(Request $request, $id){
+        $cart=Shopping::FindOrFail($id);
+        $cart->delete($request->all());
+        return redirect()->route('user-shopping');
     }
 }
